@@ -1,6 +1,6 @@
 const playBoard = document.querySelector(".play-board");
 
-let foodX = 13, foodY = 10;
+let foodX, foodY;
 let snakeX = 5, snakeY = 10;
 let velocityX = 0, velocityY = 0;
 
@@ -24,11 +24,15 @@ const changeDirection = () => {
 		velocityX = 1;
 		velocityY = 0;
 	}
-
+	initGame();
 }
 
 const initGame = () => {
 	let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+
+	snakeX += velocityX;
+	snakeY += velocityY;
+	
 	htmlMarkup += `<div class="head" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
 	playBoard.innerHTML = htmlMarkup;
 }
